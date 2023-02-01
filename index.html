@@ -1,12 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <iframe width='100%' height='500' style='height: 500px' src='https://infranodus.com/Hafnium49/news230108T0051?background=default&most_influential=bc2&maxnodes=150&labelsize=proportional&edgestype=line&drawedges=true&drawnodes=true&labelsizeratio=2&dynamic=accumulate&cutgraph=1&selected=highlighthide_always=1&link_hashtags=1' frameborder='0' allowfullscreen></iframe>
-</body>
+<html>
+  <head>
+    <title>REST API Form</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  </head>
+  <body>
+    <!-- Form to send data with a REST API -->
+    <form id="rest-form" method="POST">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" />
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <!-- JavaScript to handle the form submission -->
+    <script>
+      document.getElementById('rest-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+        const response = await fetch('https://example.com/rest/endpoint', {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await response.json();
+        // Do something with the response data
+      });
+    </script>
+  </body>
 </html>
